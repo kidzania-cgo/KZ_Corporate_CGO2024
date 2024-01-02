@@ -1,0 +1,19 @@
+<seo [(seoResponse)]="thankYouResponse"></seo>
+
+<image-slider [(headerResponse)]="thankYouResponse"></image-slider>
+<div class="section-outter">
+  	<section id="what">
+      	<div class="arc-divider"></div>
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div class="container">
+                  <div class="container">
+                  	<div class="single-column">
+                    	<p [innerHTML]="thankYouResponse?.introduction"></p>
+                   	</div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

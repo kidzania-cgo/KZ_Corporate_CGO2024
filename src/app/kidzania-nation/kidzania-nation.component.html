@@ -1,0 +1,48 @@
+<seo [(seoResponse)]="KidzaniaNationResponse"></seo>
+
+<image-slider [(headerResponse)]="KidzaniaNationResponse"></image-slider>
+
+<!-- BEGIN CONTENT SECTION -->
+
+<div class="section-outter">
+
+
+    <!-- BEGIN WHAT IS KIDZANIA  -->
+
+    <section id="what">
+
+        <div class="arc-divider"></div>
+
+        <div class="section-wrapper section-inner">
+                <div class="container">
+                    <p class="catch" [innerHTML]="KidzaniaNationResponse?.introduction"></p>
+                    <div class="spacer small"></div>
+                    <div class="row">
+                    <div  *ngFor="let section of KidzaniaNationResponse?.sections; let i=index">
+                        <!-- <p *ngIf="i==0" class="single-column"[innerHTML]="section?.description"></p> -->
+                            <div class="row" *ngIf="i>=0">
+                            <div *ngIf="i>=0 && i%2 == 0" class="col-sm-6 mg-sm grid-module" data-effect="slideInLeft">
+                                <div>
+                                    <img src={{section?.icon}}>
+                                    <h3>{{section?.title}}</h3>
+                                    <p [innerHTML]="section?.description"></p>
+                                        <div class="spacer small"></div>
+                                        <a *ngIf="section?.button_url" href={{section?.button_url}} class="btn btn-default  " data-effect="fadeInLeft">{{section?.button_title}}&nbsp;&rsaquo;</a>
+                                </div>
+                            </div>
+                            <div *ngIf="i>=0 && i%2 == 0 && KidzaniaNationResponse?.sections[i+1]" class="col-sm-6 mg-sm  delay one grid-module" data-effect="fadeInRight">
+                                <div>
+                                    <img src={{KidzaniaNationResponse?.sections[i+1]?.icon}}>
+                                    <h3>{{KidzaniaNationResponse?.sections[i+1]?.title}}</h3>
+                                    <p [innerHTML]="KidzaniaNationResponse?.sections[i+1]?.description"></p>
+                                        <div class="spacer small"></div>
+                                        <a *ngIf="KidzaniaNationResponse?.sections[i+1]?.button_url" href={{KidzaniaNationResponse?.sections[i+1]?.button_url}} class="btn btn-default  " data-effect="fadeInLeft">{{KidzaniaNationResponse?.sections[i+1]?.button_title}}&nbsp;&rsaquo;</a>
+                                </div>
+                            </div>
+                        </div >
+                    </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+</div>

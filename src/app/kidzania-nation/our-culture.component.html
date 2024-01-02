@@ -1,0 +1,33 @@
+<seo [(seoResponse)]="ourCultureResponse"></seo>
+
+<image-slider [(headerResponse)]="ourCultureResponse"></image-slider>
+
+<!-- BEGIN CONTENT SECTION -->
+<pop-up-model [(PopUpResponse)]="ourCultureResponse"></pop-up-model>
+<div class="section-outter">
+    <section id="what">
+
+        <div class="arc-divider"></div>
+
+
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div class="container">
+                    <p class="catch" [innerHTML]="ourCultureResponse?.introduction"></p>
+                    <div class="section-inner" *ngFor="let section of ourCultureResponse?.sections; let i=index">
+                         <div class="container">
+                            <div class="single-column">
+                                <div class="section-title">
+                                    <h2 class="title"><img *ngIf="section?.icon" src={{section?.icon}} class="img-icon">{{section.title}}</h2>
+                                </div>
+                                <div class="spacer small"></div>
+                                <p [innerHTML]="section?.description"></p>
+                                <a *ngIf="section?.button_title" href="#WhatIsKidzanianModal{{i}}" data-toggle="modal" class="btn btn-default">{{section?.button_title}} &nbsp;&rsaquo;</a><span id="economy"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,60 @@
+<seo [(seoResponse)]="ZtoryResponse"></seo>
+
+<image-slider [(headerResponse)]="ZtoryResponse"></image-slider>
+<div class="section-outter">
+  	<section id="what">
+      	<div class="arc-divider"></div>
+        <div class="section-wrapper">
+            <div class="container">
+                <p class="catch" [innerHTML]="ZtoryResponse?.introduction"></p>
+                <span id="ztory-module"></span>
+                <div class="spacer small"></div>
+                <div class="ztory-slider-container">
+                    <div class="ztory-portraits">
+                        <div class="ztory-slider">
+                      			<div class="portrait ztory" id="ztory-inspired"  *ngFor="let section of ZtoryResponse?.sections; let i=index" (click)="changeTail('ztory-'+i)">
+                              	<img class="portrait-img img-responsive" src={{section?.thumb_image}}>
+                              	{{section?.title}}
+                          	</div>
+                        </div>
+
+                	</div>
+                </div>
+
+                <div class="ztory-content spirit" *ngFor="let section of ZtoryResponse?.sections; let i=index; let last=last" id="ztory-{{i}}" [ngClass]="{'active': activeTab == 'ztory-'+i }">
+                    <div class="single-column">
+                        <div class="section-title">
+                        	<h2 class="title"><img src={{section?.sub_section.icon}} class="img-icon">{{section?.sub_section?.title}} </h2>
+                        </div>
+                        <p [innerHTML]="section?.sub_section?.description"></p>
+                        <div class="row">
+                        	<div class="row">
+                        		<span  *ngFor="let childSection of section?.sub_section?.child_sections; let interval=index">
+		                            <div *ngIf="interval%2 == 0" class="col-sm-6 mg-sm grid-module" data-effect="slideInLeft">
+		                                <div>
+		                                    <img src={{childSection?.icon}}>
+		                                    <h3>{{childSection?.title}}</h3>
+		                                </div>
+	                                    <p [innerHTML]="childSection?.description"></p>
+	                                    <div class="spacer small"></div>
+
+		                            </div>
+		                            <div *ngIf="interval%2 == 0 && section?.sub_section?.child_sections[interval+1]" class="col-sm-6 mg-sm  delay one grid-module" data-effect="fadeInRight">
+		                                <div>
+		                                    <img src={{section?.sub_section?.child_sections[interval+1]?.icon}}>
+		                                    <h3>{{section?.sub_section?.child_sections[interval+1]?.title}}</h3>
+		                                </div>
+	                                    <p [innerHTML]="section?.sub_section?.child_sections[interval+1]?.description"></p>
+	                                    <div class="spacer small"></div>
+		                            </div>
+                        		</span>
+                        	</div>
+                        </div>
+                        <div class="btn btn-red pull-right sscroll ztory-btn next"  (click)="changeTailandJump('ztory-', i)" *ngIf="!last">{{"ztory-continues" | translate}}</div>
+                    </div>
+                </div>
+         	</div>
+          <ng-container *ngIf="ZtoryResponse?.sections?.length>0">{{loadSlicker()}}</ng-container>
+        </div>
+  	</section>
+</div>

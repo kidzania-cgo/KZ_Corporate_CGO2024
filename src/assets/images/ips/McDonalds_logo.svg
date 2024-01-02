@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="698.92798"
+   viewBox="0 0 800 698.92798"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="McDonald's_Golden_Arches.svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="0.25"
+     inkscape:cx="246.21791"
+     inkscape:cy="690.00753"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     d="m 574.80583,49.64859 c 68.8585,0 124.71369,290.506 124.71369,649.27941 l 100.48019,0 c 0,-386.2577 -101.3668,-698.92845 -225.48941,-698.92845 -70.92717,0 -133.57954,93.68302 -174.95376,240.85696 C 358.18235,93.68257 295.53,-4.5e-4 225.19383,-4.5e-4 101.07125,-4.5e-4 0,312.37477 0,698.63248 l 100.48022,0 c 0,-358.77341 55.26407,-648.98389 124.12258,-648.98389 68.8585,0 124.71366,268.34122 124.71366,599.33483 l 99.88914,0 c 0,-330.99361 56.15072,-599.33483 125.0092,-599.33483"
+     id="path6"
+     inkscape:connector-curvature="0"
+     style="fill:#ffc300" />
+</svg>

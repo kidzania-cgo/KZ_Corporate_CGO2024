@@ -1,0 +1,157 @@
+<div class="home-wrapper" id="whatIsKz">
+    <div class="content-home-wrapper text-center">
+        <div class="header-center internal">
+            <h1>{{CareersResponse?.title}}</h1>
+            <div class="spacer small"></div>
+        </div>
+    </div>
+    <div class="fullfilter"></div>
+    <div class="internal-head" style="background: #f7f7f7 url() 59% top/cover no-repeat;" [ngStyle]="{'background-image': 'url('+CareersResponse?.header_image+')'}"></div>
+    <div class="black-filler" style="top:0; position:absolute;"></div>
+</div>
+
+<div class="section-outter">
+    <section id="what">
+        <div class="arc-divider">
+        </div><span id="headLine2"></span>
+        <div class="section-wrapper">
+            <div class="spacer small"></div>
+            <div class="section-inner">
+                <div class="container">
+                    <div class="container">
+                        <p class="catch" [innerHTML]="CareersResponse?.body"></p>
+                        <div class="spacer small"></div>
+                        <div class="new-encapsulated-modules">
+                            <div class="module" *ngFor="let category of CareersResponse?.category; let i=index" id="module{{i}}" [ngClass]="{'disabled': category?.is_active == false }">
+                                <div class="bg-img" [ngStyle]="{'background-image': 'url('+category?.header_image+')'}">
+                                    <h3>{{category?.title}}</h3>
+                                </div>
+
+                                <div class="copy text-center">
+                                    <a id="cat-btn-1" class="btn btn-red no-shadow sscroll toStepTwo toCalendar" (click)="showCategory('#career'+i+'')">{{ "see-jobs" | translate }}</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <span id="active-list"></span>
+                        <div class="spacer big"></div>
+                        <div id="#category-details">
+                            <div class="single-column car-cat careers" *ngFor="let category of CareersResponse?.category; let i=index" id="career{{i}}">
+                                <div class="category">
+                                    <h3><b><img *ngIf="category?.icon" src={{category?.icon}} class="img-icon"> {{category?.title}}</b></h3><br>
+                                    <ul class="media-links">
+                                        <li class="clearfix" *ngFor="let job of category?.job; let i=index">
+                                            <div class="media-logos awards">
+                                                <img src={{job?.icon}}>
+                                            </div>
+                                            <div class="press-title alt"><strong> {{job?.title}}<br><br></strong>
+                                            {{job?.content}}</div>
+                                            <div class="more-2 clearfix">
+                                                <a href="#job" data-toggle="modal" data-target="#job" class="btn btn-red no-shadow" (click)="createContact(job)">{{ 'read-more' | translate }}</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="spacer big"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT SECTION -->
+    </section>
+</div>
+
+<div  class="internal modal fade" id="job" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="job_header_image" class="modal-header" style="background: url() top center/cover;">
+                <div class="black-filler-modal" style="position: absolute; top:0;left:0">
+                    <div class="modal-header-topbar">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <h1 class="modal-title" id="job_title"> </h1>
+                    <p class="subt"></p>
+                </div>
+            </div>
+            <div class="arc-divider"></div>
+            <div class="modal-body">
+                <h1 class="title text-center" id="job_sub_title"> </h1>
+                <br>
+                <div id="job_body"></div>
+                <div class="spacer medium"></div>
+
+                <!-- CONTACT FORM -->
+
+                <div class="contact-module">
+                    <div class="container">
+                        <div class="contact-form col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+                            <h2 class="title" id="job_contact_title"></h2>
+                            <div id="job_contact_body"></div>
+                            <form #contactForm="ngForm" role="form" id="careerContact">
+                                <input type="text" id="name" class="form-control" placeholder="{{ 'name-contact' | translate }} *" required [(ngModel)]="contactModel.name" name="inputName" #name="ngModel">
+                                <div [hidden]="name.pristine || name.valid" class="alert alert-danger">
+                                    <div [hidden]="!name.hasError('required')">
+                                      Name is required
+                                    </div>
+                                </div>
+                                <input type="text" id="surname" class="form-control" placeholder="{{ 'surname-contact' | translate }} *" required [(ngModel)]="contactModel.surname" name="inputSurname" #surname="ngModel">
+                                <div [hidden]="surname.pristine || surname.valid" class="alert alert-danger">
+                                    <div [hidden]="!surname.hasError('required')">
+                                      Surname is required
+                                    </div>
+                                </div>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="{{ 'email-contact' | translate }} *" required [(ngModel)]="contactModel.email" name="email *" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel">
+                                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                                   <div [hidden]="!email.hasError('required')">Email is required</div>
+                                   <div [hidden]="!email.hasError('pattern')">Email format should be
+                                      <small><b>john@abc.com</b></small>
+                                   </div>
+                                </div>
+                                <input type="text" id="phone" class="form-control" placeholder="{{ 'phone-contact' | translate }} *" required [(ngModel)]="contactModel.phone" name="inputPhone" #phone="ngModel">
+                                <div [hidden]="phone.pristine || phone.valid" class="alert alert-danger">
+                                    <div [hidden]="!phone.hasError('required')">
+                                      Phone number is required
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Position Name or Position Code" required [(ngModel)]="contactModel.position" name="inputPosition" #position="ngModel" disabled="">
+                                <div [hidden]="position.pristine || position.valid" class="alert alert-danger">
+                                    <div [hidden]="!position.hasError('required')">
+                                      Position is required
+                                    </div>
+                                </div><br>
+                                <label for="file1">{{ 'upload-resume' | translate }}</label>
+                                <input type="file" name="file1" id="file1" accept=".jpg, .doc, .pdf" (change)="onFileChange($event.target.files, 'fileOne')" #fileOneInput> 
+                                <div class="alert alert-danger" style="display: none;">Please upload resume</div>
+                                <label for="file1">{{ 'attach-second-file' | translate }}(e.g. Portfolio)</label>
+                                <input type="file" name="file2" id="file2" accept=".jpg, .doc, .pdf" (change)="onFileChange($event.target.files, 'fileTwo')" #fileTwoInput><br>
+                                <input type="text" class="form-control" name="link" id="link" placeholder="{{ 'relevent-link' | translate }}">
+                                <br>
+                                <div class="g-recaptcha" data-sitekey="6LdHNjYUAAAAAGRdLhvejJXriOo4HJwUa4oy6UFZ"></div><br>
+                                <div [hidden]="!invalidCaptcha" class="alert alert-danger">
+                                  Invalid or expired. Please verify again.
+                                </div>
+                                <div class="form-group">
+                                    <input id="legal_note_check" type="checkbox" (click)="hideLegalError()" value=false> <label> {{ 'i-agree' | translate }} <a href="en/privacy" target="_blank">{{ "privacy-policy" | translate }}</a>*</label>
+                                    <div id='legal_error' class="alert alert-danger" hidden="true">Please agree before submit</div>
+                                </div>
+
+                                    <button type="submit" class="btn btn-lg btn-red" id="contact-form" (click)="submitCareerContact()">{{ 'apply-now' | translate }}&nbsp;&nbsp;›</button>
+                                    <p style="font-size:13px; margin-bottom: 20px;text-align: center;"><sup>*</sup> {{ "required" | translate }}</p>
+                                </form>
+
+                            <div class="zanks" id="zankYou">
+                                <h2>ZanKs for taking the time to apply and your interest in joining the KidZania family! </h2>
+                                <div class="img-success"><span class="glyphicon glyphicon-ok"></span></div>
+                                <p>We received your application, which will be evaluated by the KidZania Talent Team and if your application matches our requirements, we’ll contact you to discuss next steps</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacer big"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="internal modal fade" *ngFor="let section of PopUpResponse?.sections; let i=index" id="WhatIsKidzanianModal{{i}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" [ngStyle]="{'background-image': 'url('+section?.sub_section?.header_image+')', 'background-position': 'center center', 'background-size': 'cover'} " >
+                <div class="black-filler-modal" style="position: absolute; top:0;left:0">
+                    <div class="modal-header-topbar" id="WhatIsKidzanianModal{{i}}-top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <h1 class="modal-title" id="myModalLabel">{{section?.sub_section?.title}}</h1>
+                </div>
+            </div>
+            <div class="arc-divider"></div>
+            <div class="modal-body">
+                <p class="catch"[innerHTML]="section?.sub_section?.description"></p>
+                <div class="spacer small"></div>
+                <div class="single-column" *ngFor="let subSection of section?.sub_section?.child_sections">
+                    <h3 *ngIf="subSection?.title" class="title" >
+                    <img src="{{subSection.icon}}" class="img-icon"> {{subSection.title}}
+                    </h3>
+                    <p [innerHTML]="subSection?.description"></p>
+
+                </div>
+            </div>
+
+            <div class="totop-modal" id="backtotop" (click)="scrollToTop('WhatIsKidzanianModal'+i+'-top')">
+              <a><span class="glyphicon glyphicon-menu-up"></span></a>
+            </div>
+        </div>
+    </div>
+</div>

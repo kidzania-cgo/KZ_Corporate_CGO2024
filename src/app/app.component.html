@@ -1,0 +1,204 @@
+<body data-spy="scroll" data-target="#navSpy" [ngClass]="headerFooter?.nl_activated ? 'nl ' + currLang : currLang" >
+    {{setFavicon(headerFooter?.nl_activated, headerFooter?.favicon)}}
+    <ng-container *ngIf = "currLang === 'ar'">{{loadrtlCss()}}</ng-container>
+    <ng-container>{{loadlangFont(currLang)}}</ng-container>
+    <!-- NEW MOBILE NAV  -->
+    <div class="mobile-nav">
+        <a role="button" class="mobile-menu-toggle pull-left" data-toggle="collapse" href="#content-list">
+            <div class="icon-bar"></div>
+            <div class="icon-bar middle"></div>
+            <div class="icon-bar"></div>
+        </a>
+        <a href="{{currLang}}/index"><img [src]="headerFooter?.nl_activated ? headerFooter?.white_logo : './../assets/images/kz-logo-2-white.svg'"
+                                  class="img-responsive mobile-nav-logo"></a>
+
+        <div class="content-list panel-group collapse" id="content-list" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="langSel">
+                    <div class="lang-selector">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#content-list" href="#langSel2" aria-expanded="false" aria-controls="collapseTwo">
+                        <span class="glyphicon glyphicon-globe"></span> {{currentLanguage}}
+                        <span *ngIf = "locales?.length !== 1" class="caret"></span>
+                        </a>       
+                    </div>
+                    <div id="langSel2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        <ul *ngIf = "locales?.length !== 1" class="sub-menu list-unstyled" >
+                            <li *ngFor="let locale of locales"><a *ngIf = "locale.name !== currentLanguage" (click)="changeLang(locale?.locale.split('-')[0])">{{locale?.name}}</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" *ngFor="let menu of headerFooter?.menus; let i=index">
+                <div class="panel-heading" role="tab" id="headingOne" >
+                    <a *ngIf="menu?.sub_menus.length>0" class="collapsed" role="button" data-toggle="collapse" data-parent="#content-list" href="#collapse{{i}}" attr.aria-expanded="false" attr.aria-controls="collapse{{i}}">
+                       {{menu?.name}} <span *ngIf="menu?.sub_menus.length>0" class="caret"></span>
+                    </a>
+                    <a *ngIf="menu?.sub_menus.length<=0" role="button" href={{menu?.url}} target="{{menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}" attr.aria-expanded="true" attr.aria-controls="collapse{{i}}">
+                       {{menu?.name}} <span *ngIf="menu?.sub_menus.length>0" class="caret"></span>
+                    </a>
+                </div>
+                <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" attr.aria-labelledby="heading{{i}}">
+                    <div class="panel-body">
+                        <ul class="sub-menu list-unstyled">
+                            <li *ngFor="let sub_menu of menu.sub_menus">
+                                            <a href={{sub_menu?.url}} target="{{sub_menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{sub_menu?.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN OUTTER -->
+
+
+    <div class="outter">
+        <!---->
+        <!-- BEGIN NAVBAR -->
+
+        <!<div class="sticky-nav" data-spy="affix" data-offset-top="800">
+            <nav class="navbar navbar-default " role="navigation" >
+
+
+                <div class="container-fluid nav-container center-block">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+
+
+                    <div class="navbar-header">
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+                        <div class="collapse navbar-collapse no-transition" id="bs-example-navbar-collapse-1">
+                            <a class="navbar-brand" href="{{currLang}}/index" id="logo">
+                                <img [src]="headerFooter?.nl_activated ? headerFooter?.white_logo : './../assets/images/kz-logo-2-white.svg'" alt="KidZania" class="img-responsive hidden-xs hidden-sm hidden-md">
+                            </a>
+                            <div class="lang-selector">
+                                <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="glyphicon glyphicon-globe"></span>{{currentLanguage}}
+                                    <span *ngIf = "locales?.length !== 1" class="caret"></span>
+                                  </a>
+                                  <ul *ngIf = "locales?.length !== 1" class="dropdown-menu language-selector" aria-labelledby="dropdownMenu1">
+                                    <li *ngFor="let locale of locales">
+                                        <a *ngIf = "locale.name !== currentLanguage" (click)="changeLang(locale?.locale.split('-')[0])">{{locale?.name}}</a>
+                                    </li>
+                                  </ul>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right" id="#mainNav">
+
+                                <li class = "dropdown" [ngClass]="{'current': checkMenuActive(menu) }" *ngFor="let menu of headerFooter?.menus; let i=index" (mouseenter)="showSubMenu($event)" (mouseleave)="hideSubMenu($event)" id="menu-{{i}}">
+                                    <a  class="" data-toggle="" id="a-menu-{{i}}" href={{menu?.url}} target="{{menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{menu?.name}} <b *ngIf="menu?.sub_menus.length>0" class="caret"></b>&nbsp;</a>
+                                    <ul  *ngIf="menu?.sub_menus.length>0" class="dropdown-menu" role="menu" id="dropdown-menu-{{i}}" [ngClass]="{'active': activeTab == 'menu-'+i }">
+                                        <li *ngFor="let sub_menu of menu.sub_menus">
+                                            <a href={{sub_menu?.url}} target="{{sub_menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{sub_menu?.name}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <div class="menu-wave collapse">
+                                <svg viewBox="0 0 320 45" preserveAspectRatio="none" version="1.1">
+                                    <path d="M85.5741047,13.3515626 C140.382584,13.3515626 178.904899,44.5634766 238.222201,44.5634766 C297.539503,44.5634766 320.005493,28.9573975 320.005493,28.9573975 L320.005493,0.000732421858 L0.00549316406,0.000732421858 L0.00549316406,30.9012451 C0.00549316406,30.9012451 30.7656257,13.3515626 85.5741047,13.3515626 Z"
+                                          fill="#BD234D"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+
+                        <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar middle"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="logo-header-mobile center-block hidden-lg">
+                            <img src="./../assets/images/logo-kidzania-white.svg">
+                        </div>
+
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+
+                <!-- /.container-fluid -->
+            </nav>
+
+            <div id="navSpy" class="navbar-fixed-top hidden-xs hidden-sm hidden-md" data-spy="affix" data-offset-top="60">
+                <div class="mainNavSpy">
+                    <div [ngClass]="{'container': currLang === 'ar'}" style="max-width: 1400px;margin-right: auto;margin-left: auto;">
+                        <a href="{{currLang}}/index"><img [src]="headerFooter?.nl_activated ? headerFooter?.flag_logo : './../assets/images/kz-logo-2-flag.svg'" class="img-responsive pull-left nav-brand-2"></a>
+                        <div class="lang-selector">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="glyphicon glyphicon-globe"></span>{{currentLanguage}}
+                                <span *ngIf = "locales?.length !== 1" class="caret"></span>
+                              </a>
+                              <ul *ngIf = "locales?.length !== 1" class="dropdown-menu language-selector" aria-labelledby="dropdownMenu1">
+                                <li *ngFor="let locale of locales" >
+                                    <a *ngIf = "locale.name !== currentLanguage" (click)="changeLang(locale?.locale.split('-')[0])">{{locale?.name}}</a>
+                                </li>
+                              </ul>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class = "dropdown" [ngClass]="{'current': checkMenuActive(menu) }" *ngFor="let menu of headerFooter?.menus; let i=index" (mouseenter)="showSubMenu($event)" (mouseleave)="hideSubMenu($event)" id="menu2-{{i}}">
+                                <a  data-toggle="" id="a-menu2-{{i}}" href={{menu?.url}} target="{{menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{menu?.name}} <b *ngIf="menu?.sub_menus.length>0" class="caret"></b>&nbsp;</a>
+                                <ul *ngIf="menu?.sub_menus.length>0" class="dropdown-menu2 dropdown-menu" role="menu" id="dropdown-menu2-{{i}}" [ngClass]="{'active': activeTab == 'menu2-'+i }">
+                                    <li *ngFor="let sub_menu of menu.sub_menus">
+                                        <a href={{sub_menu?.url}} target="{{sub_menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{sub_menu?.name}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <ng-container *ngFor="let menu of headerFooter?.menus">
+                  <ng-container *ngIf="checkMenuActive(menu) && menu?.sub_menus?.length">
+                    <ul class="nav navSpy" [ngClass]="{'whats-kidzania': IsWhatsKidzania() }">
+                        <li role="presentation" [ngClass]="{'active': ActivePage(sub_menu) }" class="active" *ngFor="let sub_menu of menu?.sub_menus">
+                          <a href={{sub_menu?.url}} target="{{sub_menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}" class="sscroll">{{sub_menu?.name}}</a>
+                        </li>
+                    </ul>
+                  </ng-container>
+                </ng-container>
+
+            </div>
+
+        <!-- END NAVBAR -->
+
+        <!-- BEGIN CONTENT SECTION -->
+        <router-outlet></router-outlet>
+
+    <!-- END OUTTER -->
+        <div class="section-outter">
+            <nav class="footer-nav" role="navigation">
+                <ul>
+                    <li class="" *ngFor="let menu of headerFooter?.menus"><a href={{menu?.url}} target="{{menu?.open_in_new_tab == 1 ? '_blank' : '_self'}}">{{menu?.name}}</a>
+                    </li>
+                </ul>
+            </nav>
+            <p class="copyright">{{headerFooter?.legal_advice}} | <a href="{{currLang}}/privacy" > {{ "privacy-policy" | translate }}</a></p>
+            <div class="spacer small" style="background: white;"></div>
+        </div>
+
+    </div>
+
+    <div class="cookie-bar purple" style="display: block;" *ngIf="cookieSet()">
+        <div class="inner"><img src="./../assets/images/cookies-bache.png"> {{headerFooter?.cookie?.description}} <a href={{headerFooter?.cookie?.link_url}}>{{headerFooter?.cookie?.link_title}}</a>
+            <br><br>
+            <button class="btn btn-red" id="cookiesOk" (click)="addCookie()">Accept</button>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div class="totop" id="backtotop">
+            <span>
+                <a href="#home" class="first sscroll"><i class="fa fa-angle-up"></i></a>
+                <a href="#home" class="hover sscroll"><i class="fa fa-angle-up"></i></a>
+            </span>
+    </div>
+    <!-- END BACK TO TOP -->
+
+</body>

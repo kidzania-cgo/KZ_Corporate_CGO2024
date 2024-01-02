@@ -1,0 +1,205 @@
+<seo [(seoResponse)]="RightzResponse"></seo>
+
+<image-slider [(headerResponse)]="RightzResponse"></image-slider>
+<div class="section-outter">
+  	<section id="what">
+      	<div class="arc-divider"></div>
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div>
+                    <p class="single-column" [innerHTML]="RightzResponse?.introduction"></p>
+                    <div class="rk-module clearfix">
+                      <div class="rk-portraits">
+                          <a class="sscroll" *ngFor="let section of RightzResponse?.sections; let i=index; let last=last" (click)="changeTail('rightz-'+i)">
+                              <div class="portrait urbano">
+                                  <span id="info-anchor" *ngIf="last"></span>
+                                  <img class="portrait-img img-responsive" src={{section?.thumb_image}}>
+                                  {{section?.title}}
+                              </div>
+
+                          </a>
+                      </div>
+
+                      <div>
+                        <div class="vita-info" *ngFor="let section of RightzResponse?.sections; let i=index" id="rightz-{{i}}" [ngClass]="{'active': activeTab == 'rightz-'+i }" >
+                            <div class="single-column profile-pazzport-container {{section?.sub_section?.mascot_profile?.name | lowercase}}-info" style="display: block;">
+                                <div class="top clearfix" [ngSwitch]= "section?.sub_section?.mascot_profile?.name">
+                                    <div *ngSwitchCase= "'BACHE'">
+                                        <div class="row clearfix pazzport-header">
+                                            <div class="col-sm-6" >
+                                                <img src="/assets/images/vet-stamp.png" class="vet-stamp">
+                                                <p class="rk-name">{{section?.sub_section?.mascot_profile?.name}}</p>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="pazz-no-label">{{"vaccination-card" | translate}}</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4 data-0">
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.owner">{{"owner" | translate}} </label>
+                                            <p class="pazz-value" *ngIf="section?.sub_section?.mascot_profile?.owner">{{section?.sub_section?.mascot_profile?.owner}} </p>
+                                            <label class="r" *ngIf="section?.sub_section?.mascot_profile?.date_of_birth">{{"dob" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.date_of_birth}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.breed">{{"breed" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.breed}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.height">{{"height" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.height}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.hair_color">{{"hair-color" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.hair_color}}</p>
+                                        </div>
+
+                                        <div class="col-sm-3 data-0">
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.gender">{{"gender" | translate}} </label>
+                                            <p class="pazz-value">{{ section?.sub_section?.mascot_profile?.gender | translate}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.age">{{"age" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.age}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.weight">{{
+                                            "weight" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.weight}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.eye_color">{{"eye-color" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.eye_color}} </p>
+                                        </div>
+
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.gender">
+                                            <label class="">{{"gender" | translate}} </label> &nbsp;{{ section?.sub_section?.mascot_profile?.gender | translate}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.age">
+                                            <label class="">{{"age" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.age}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.date_of_birth">
+                                            <label class="r">{{"dob" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.date_of_birth}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.breed">
+                                            <label class="">{{"breed" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.breed}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.weight">
+                                            <label class="">{{
+                                            "weight" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.weight}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.height">
+                                            <label class="">{{"height" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.height}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.hair_color">
+                                            <label class="">{{"hair-color" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.hair_color}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.eye_color">
+                                            <label class="">{{"eye-color" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.eye_color}}
+                                        </div>
+                                        <div class="pazz-info-2" *ngIf="section?.sub_section?.mascot_profile?.owner">
+                                            <label class="">{{"owner" | translate}} </label> &nbsp;{{section?.sub_section?.mascot_profile?.owner}}
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <img src="/assets/images/flag-seal-stamp-2.png" class="stamp-flag">
+                                            <img src={{section?.sub_section?.profile_image}} class="profile-pic img-responsive">
+
+                                        </div>
+                                        <div class="barcode">
+                                            <img src={{section?.sub_section?.mascot_profile?.barcode}} class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div *ngSwitchDefault>
+                                        <div class="row clearfix pazzport-header">
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <label class="text-center">{{"passport" | translate}}</label>
+                                            </div>
+                                            <div class="col-sm-4"><img src="../../../src/assets/images/kz-logo-2-color.svg" class="pazz-logo"></div>
+                                            <div class="col-sm-4">
+                                                <label class="pazz-no-label">{{"passport-no" | translate}}</label>
+                                                <p class="pazz-value pazzport-number">{{section?.sub_section?.mascot_profile?.passport_no}}</p>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-5">
+                                            <img src="../../../src/assets/images/flag-seal-stamp-2.png" class="stamp-flag">
+                                            <img src={{section?.sub_section?.profile_image}} class="profile-pic img-responsive">
+                                            <div class="rk-name">{{section?.sub_section?.mascot_profile?.name}}</div>
+                                        </div>
+
+                                        <div class="col-sm-4 data-0">
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.nationality">{{"nationality" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.nationality}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.owner">{{"owner" | translate}} </label>
+                                            <p class="pazz-value" *ngIf="section?.sub_section?.mascot_profile?.owner">{{section?.sub_section?.mascot_profile?.owner}} </p>
+                                            <label class="r" *ngIf="section?.sub_section?.mascot_profile?.date_of_birth">{{"dob" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.date_of_birth}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.breed">{{"breed" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.breed}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.height">{{"height" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.height}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.hair_color">{{"hair-color" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.hair_color}}</p>
+                                        </div>
+
+                                        <div class="col-sm-3 data-0">
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.gender">{{"gender" | translate}} </label>
+                                            <p class="pazz-value">{{ section?.sub_section?.mascot_profile?.gender | translate}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.age">{{"age" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.age}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.weight">{{
+                                            "weight" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.weight}}</p>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.eye_color">{{"eye-color" | translate}} </label>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.eye_color}} </p>
+                                        </div>
+
+                                        <div class="col-sm-3 data-1">
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.nationality">{{"nationality" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.owner">{{"owner" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.gender">{{"gender" | translate}} </label>
+                                            <label class="r" *ngIf="section?.sub_section?.mascot_profile?.age">{{"age" | translate}} </label>
+                                            <label class="r" *ngIf="section?.sub_section?.mascot_profile?.date_of_birth">{{"dob" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.breed">{{"breed" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.height">{{"height" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.weight">{{"weight" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.hair_color">{{"hair-color" | translate}} </label>
+                                            <label class="" *ngIf="section?.sub_section?.mascot_profile?.eye_color">{{"eye-color" | translate}} </label>
+
+                                        </div>
+                                        <div class="col-sm-4 data-2">
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.nationality}}</p>
+                                            <p class="pazz-value" *ngIf="section?.sub_section?.mascot_profile?.owner">{{section?.sub_section?.mascot_profile?.owner}} </p>
+                                            <p class="pazz-value">{{ section?.sub_section?.mascot_profile?.gender | translate}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.age}}</p>
+                                            <br class='br-rk' *ngIf="currLang=='es'">
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.date_of_birth}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.breed}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.height}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.weight}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.hair_color}}</p>
+                                            <p class="pazz-value">{{section?.sub_section?.mascot_profile?.eye_color}} </p>
+                                        </div>
+                                        <div class="barcode">
+                                            <img src={{section?.sub_section?.mascot_profile?.barcode}} class="img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom clearfix">
+
+                                    <p class="catch">
+                                    <img src={{section?.sub_section?.mascot_profile?.title_icon}} class="right-icon">
+                                    {{section?.sub_section?.title}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.description"><strong>{{"description" | translate}}</strong> {{section?.sub_section?.mascot_profile?.description}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.personality"><strong>{{"personality" | translate}}</strong> {{section?.sub_section?.mascot_profile?.personality}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.dream"><strong>{{"dream" | translate}}</strong> {{section?.sub_section?.mascot_profile?.dream}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.proudest_moment"><strong>{{"proudest-moment" | translate}}</strong>{{section?.sub_section?.mascot_profile?.proudest_moment}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.inspiration"><strong>{{"inspiration" | translate}}</strong> {{section?.sub_section?.mascot_profile?.inspiration}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.chalanges"><strong>{{"challenge" | translate}}</strong> {{section?.sub_section?.mascot_profile?.chalanges}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.career"><strong>{{"career" | translate}}</strong> {{section?.sub_section?.mascot_profile?.career}}</p>
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.nobbles"><strong>{{"hobbies" | translate}}</strong> {{section?.sub_section?.mascot_profile?.nobbles}}</p>
+
+                                    <p *ngIf="section?.sub_section?.mascot_profile?.top_establishments"><strong>{{"top_establishments" | translate}}</strong> {{section?.sub_section?.mascot_profile?.top_establishments}}</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+         	  </div>
+        </div>
+
+  	</section>
+</div>

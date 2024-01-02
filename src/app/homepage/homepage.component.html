@@ -1,0 +1,230 @@
+<seo [(seoResponse)]="response"></seo>
+
+<div *ngIf="response?.season">
+  <season [(seasonResponse)]="response"></season>
+</div>
+
+<!--BEGIN WIDGET-->
+<div class="col-md-3 col-md-offset-9 widget">
+    <div class="thumbnail widget-top-mdl">
+        <div class="">
+            <div class="form-group clearfix">
+                <label for="sel2"> <img [src]="response?.nl_activated ? response?.flag_logo : '../../../src/assets/images/kz-logo-2-flag.svg'" class="widget-icon">{{"choose-kidzania" | translate}}</label>
+                <select class="form-control" id="sel1" (change)="updateWidgetLink($event.target.value)">
+                  <option>{{"go-to" | translate}}...</option>
+                  <option *ngFor="let widget of response?.kidzania_widgets" [value]=widget?.url>{{widget?.name}}</option>
+                </select>
+                <a id="widget-link" target="_blank"><span class="glyphicon glyphicon-send"></span></a>
+            </div>
+        </div>
+        <div class="widget-low-mdl">
+            <!--<a data-toggle="modal" data-target="#myModal"><img src="images/widget-background.png"></a>-->
+            <a class="sscroll slider-more" href="" data-toggle="modal" data-target="#myModal" (click)="showModal = true; map.enableToolTip()"><i class="fa fa-search"></i></a>
+        </div>
+
+    </div>
+</div>
+<!--END WIDGET-->
+<map #map [(mapResponse)]="response" ></map>
+
+<!-- BEGIN SLIDER VIDEO -->
+<video-section [(response)]="response"></video-section>
+
+<!-- END SLIDER VIDEO -->
+
+<video-popup-model [(videoResponse)]="response"></video-popup-model>
+
+<!-- BEGIN WHAT IS KIDZANIA  -->
+<div class="section-outter">
+
+  <section>
+
+
+    <div class="arc-divider home" id="what">
+
+
+    </div>
+
+    <div class="section-wrapper">
+      <div class="pict" data-effect="rollIn">
+      <div class="widget-spacer"></div>
+
+        </div>
+        <div class="section-title">
+          <h2 class="title"><img src={{response?.whats_kidzania?.icon}} class="img-icon"> {{response?.whats_kidzania?.title}}</h2>
+          <p class="subtitle  center-push" [innerHTML]="response?.whats_kidzania?.body"></p>
+      </div>
+      <div class="spacer medium"></div>
+
+      <a href="#videoModal" data-toggle="modal" class="btn btn-default" id="videoModalBtn" *ngIf="response?.whats_kidzania?.video_url" (click)="embedVideo(response.whats_kidzania.video_url)">{{response?.whats_kidzania?.video_button_title}} &nbsp;&nbsp;&rsaquo;</a>
+      <div class="spacer big"></div>
+        <div class="section-inner" >
+            <div class="container" >
+
+                <div class="single-column" *ngIf="response?.role_play?.title">
+                    <div class="section-title" *ngIf="response?.role_play?.title"><h2 class="title"> <img src={{response?.role_play?.icon}} class="img-icon"> {{response?.role_play?.title}}</h2></div>
+                    <p [innerHTML]="response?.role_play?.body"><</p>
+                    <div class="spacer small"></div>
+
+                    <div class="section-title" *ngIf="response?.activity?.title"><h2 class="title"> <img src={{response?.activity?.icon}} class="img-icon"> {{response?.activity?.title}}</h2></div>
+                    <p [innerHTML]="response?.activity?.body"><</p>
+                    <div class="spacer small"></div>
+
+                    <div class="section-title" *ngIf="response?.experiencial_learing?.title"><h2 class="title"> <img src={{response?.experiencial_learing?.icon}} class="img-icon"> {{response?.experiencial_learing?.title}}</h2></div>
+                    <p [innerHTML]="response?.experiencial_learing?.body"></p>
+                    <div class="spacer small"></div>
+
+                    <div id="around-the-world"></div>
+                    <hr *ngIf="response?.experiencial_learing?.title" class="title-break">
+                </div>
+          </div>
+      </div>
+    </div>
+</section>
+
+<div id="demo" class="">
+    <div class="container" >
+      <div class="row">
+      <div class="section-title">
+              <h2 class="title "data-effect="fadeInDown"><img src={{response?.around_world?.icon}} class="img-icon">  {{response?.around_world?.title}}</h2>
+              <p class="subtitle center-push" [innerHTML]="response?.around_world?.body"> </p><br>
+      </div>
+
+      <div class="around-the-world " data-effect="fadeInUp">
+        <h3><img src="/assets/images/icons/map-marker-circle.svg" class="img-icon">{{ "active-facility" | translate }}</h3><br>
+        <span class="country state clearfix" *ngFor="let opendCountry of response?.around_world?.opened">
+            <span class="flag" [ngStyle]="{'background-image': 'url(' + opendCountry?.flag + ')'}"></span>{{opendCountry?.name}}:
+                <div class="cities pull-right" *ngFor="let region of opendCountry?.regions; let first = first">
+                    <a href={{region?.url}} target="_blank" [ngClass]="{'de-active-site': !region.activated}" *ngIf="region?.url">{{region.name}}</a>
+                    <a [ngClass]="{'de-active-site': !region.activated}" *ngIf="!region?.url">{{region.name}}</a>
+                    <span class="atw-divider" *ngIf="!first">|</span>
+                </div>
+        </span>
+
+        <div class="row">
+            <h3><img src="/assets/images/icons/map-marker-circle-2.svg" class="img-icon">{{ "coming-soon" | translate }}</h3><br>
+            <span class="country clearfix" *ngFor="let openingShortly of response?.around_world?.opening_shortly">
+                <span class="flag" [ngStyle]="{'background-image': 'url(' + openingShortly?.flag + ')'}"></span>{{openingShortly?.name}}:
+                <div class="cities pull-right" *ngFor="let region of openingShortly?.regions; let first = first">
+                    <a href={{region?.url}} target="_blank"  [ngClass]="{'de-active-site': !region.activated}" *ngIf="region?.url">{{region.name}}</a>
+                    <a [ngClass]="{'de-active-site': !region.activated}" *ngIf="!region?.url">{{region.name}}</a>
+                    <span class="atw-divider" *ngIf="!first">|</span>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<!-- BEGIN CONTACT -->
+<section id="contact">
+    <div class="section-wrapper">
+        <!<hr class="title-break">
+        <div class="section-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h2 class="title contact" data-effect="fadeInDown"><img src={{response?.contact_form?.icon}} class="img-icon">{{response?.contact_form?.title}}</h2>
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-4 mg-sm footer-left text-center" data-effect="fadeIn">
+                        <div class="logo-footer center-block">
+                            <img [src]="response?.nl_activated ? response?.color_logo : './../../assets/images/kz-logo-2-color.svg'">
+                        </div>
+                       <h3 style="max-width: 250px"><strong>{{response?.social_media_title}}</strong></h3>
+                       <div class="soc-btn" >
+                         <span *ngFor="let smICon of response?.sm_icons">
+                         <a href={{smICon.url}} ><img src={{smICon?.image}} class="svg social-logo"></a>
+                         </span>
+                       </div>
+                    </div>
+
+                    <div class="col-md-5 mg-sm " data-effect="fadeIn">
+
+                        <form #contactForm="ngForm" role="form" class="text-left">
+                            <div class="form-group">
+                                <label for="sel1">{{response?.contact_form?.topic_field}} *</label>
+
+                                <select class="form-control" id="sel-top" required [(ngModel)]="contactModel.topic" name="sel-top">
+                                  <option *ngFor="let topic of response?.contact_form.topics" [ngValue]=topic?.name>{{topic?.title}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error' : submited }">
+                                <label for="inputEmail1">{{response?.contact_form?.user_name_field}}*</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="" required [(ngModel)]="contactModel.name" name="inputName" #name="ngModel">
+                                <div [hidden]="name.pristine || name.valid" class="alert alert-danger">
+                                    <div [hidden]="!name.hasError('required')">
+                                      {{ "name_required" | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputText1">{{response?.contact_form?.company_name_field}}*</label>
+
+                                <input type="text" class="form-control" id="inputCompany" placeholder="" required [(ngModel)]="contactModel.company" name="inputCompany" #company="ngModel">
+
+                                <div [hidden]="company.pristine || company.valid" class="alert alert-danger">
+                                    <div [hidden]="!company.hasError('required')">
+                                      {{ "company_name_required" | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputText1">{{response?.contact_form?.email_field}}*</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="" required [(ngModel)]="contactModel.email" name="inputEmail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel">
+
+                                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                                   <div [hidden]="!email.hasError('required')">{{ "email_required" | translate }}</div>
+                                   <div [hidden]="!email.hasError('pattern')">{{ "email_format" | translate }}
+                                      <small><b>john@abc.com</b></small>
+                                   </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                  <label for="sel1">{{response?.contact_form?.country_field}}*</label>
+                                  <select class="form-control" id="sel-2" required [(ngModel)]="contactModel.country" name="sel-2" #country="ngModel">
+                                    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                                  </select>
+                                  <div [hidden]="country.pristine || country.valid" class="alert alert-danger">
+                                    <div [hidden]="!country.hasError('required')">
+                                      {{ "country_required" | translate }}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div>
+                                    <label>{{response?.contact_form?.message_field}}*</label>
+                                    <textarea class="message" type="textarea" name="message" id="inputComment" required [(ngModel)]="contactModel.message" name="inputComment" #message="ngModel"></textarea>
+                                    <div [hidden]="message.pristine || message.valid" class="alert alert-danger">
+                                      <div [hidden]="!message.hasError('required')">
+                                        {{ "message_required" | translate }}
+                                      </div>
+                                    </div>
+                                </div>
+                            <div class="form-group" *ngIf="response?.contact_form?.legal_copy">
+                              <input id="legal_note_check" type="checkbox" (click)="hideLegalError()" value=false>
+                              {{response?.contact_form?.legal_copy.split(response?.contact_form?.legal_link_text)[0]}}
+                              <a href={{response?.contact_form?.legal_url}}>
+                                {{response?.contact_form?.legal_link_text}}
+                              </a>
+                              {{response?.contact_form?.legal_copy.split(response?.contact_form?.legal_link_text)[1]}}
+                              <div id='legal_error' class="alert alert-danger" hidden="true">{{ "before_submit" | translate }}</div>
+                            </div>
+
+                            <div class="spacer small"></div>
+                            <div class="form-group" id='captcha'>
+                              <div class="g-recaptcha" data-sitekey="6LdHNjYUAAAAAGRdLhvejJXriOo4HJwUa4oy6UFZ"></div>
+                            </div>
+                            <div [hidden]="!invalidCaptcha" class="alert alert-danger">
+                              {{ "invalid_message" | translate }}
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary" id="contact-form" (click)="submitContact()">{{response?.contact_form?.button_title}}&nbsp;&rsaquo;</button>
+                            <p style="font-size:13px; margin-bottom: 20px;"><sup>*</sup> {{ "required" | translate }}</p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="response?.contact_form?.button_title">{{gotoRefernece()}}</ng-container>
+</section>

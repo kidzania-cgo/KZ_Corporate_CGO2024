@@ -1,0 +1,6 @@
+<div [ngSwitch]="seasonResponse?.season?.layout">
+  <leaf *ngSwitchCase="'leaf'" [(seasonResponse)]="seasonResponse"></leaf>
+  <spooky *ngSwitchCase="'spooky'" [(seasonResponse)]="seasonResponse"></spooky>
+  <snow *ngSwitchCase="'snow'" [(seasonResponse)]="seasonResponse"></snow>
+  <enterpreneur *ngSwitchCase="'enterpreneur'" [(seasonResponse)]="seasonResponse"></enterpreneur>
+</div>

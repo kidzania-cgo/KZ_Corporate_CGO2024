@@ -1,0 +1,49 @@
+/* ### Bootstrap core CSS  ###  */
+/*@import "./../../src/assets/styles/css/bootstrap.min.css";*/
+/* ### Font Awesome CSS  ###  */
+/*@import "./../assets/styles/css/lib/font-awesome.css";*/
+/* ### Zocial CSS  ###  */
+/*@import "./../assets/styles/css/lib/zocial.css";*/
+/* ### VENOBOx CSS  ###  */
+/*@import "./../assets/styles/css/lib/venobox.css";*/
+/* ### EXPANDING THUMBNAIL CSS  ###  */
+/*@import "./../assets/styles/css/lib/og-component.css";*/
+/* ### ANIMATED CSS  ###  */
+/*@import "./../assets/styles/css/lib/animate.css";*/
+/* ### STYLE CSS  ###  */
+/*@import "./../assets/styles/css/style1.css";*/
+/* ### Owl Carousel Assets  ###  */
+/*@import "./../assets/styles/css/lib/owl.carousel.css";*/
+
+.dropdown-menu.active{
+    display: block !important;
+}
+.dropdown-menu2.collapse {
+    display: none !important;
+}
+.dropdown-menu2.active{
+    display: block !important;
+}
+.dropdown-menu2 {
+    left:-10px;
+    right: auto;
+    text-align: left;
+    margin-top: -12px !important;
+}
+.dropdown-menu2 .dropdown-menu {
+    margin-top: -10px !important;
+}
+
+
+.dropdown-menu.language-selector {
+    left: 0;
+    right: auto;
+    top: auto;
+    min-width: 0;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+#langSel2 {
+    font-size: 13px;
+}

@@ -1,0 +1,59 @@
+<div class="home-wrapper error">
+  <div class="content-home-wrapper text-center"></div>
+  <div class="fullfilter"></div>
+</div>
+<div class="section-outter">
+  <div class="arc-divider">
+  </div>
+  <div class="spacer medium"></div>
+  <section class="internal-content">
+    <!-- 404 MODULE
+    -->
+    <div class="e404-content container">
+      <h1 class="title">
+        {{"errors-not-found-title" | translate}}
+      </h1>
+      <div class="spacer small"></div>
+      <div class="col-xs-12 col-md-5 col-md-offset-1">
+        <img class="img-responsive" src="../../../src/assets/images/404.png"/>
+      </div>
+      <div class="col-xs-12 col-md-5 col-md-offset-1">
+        <p class="subtitle">{{"errors-not-found-subtitle" | translate}}</p>
+        <p [innerHTML]="'errors-not-found-body' | translate"></p>
+        <p class="error-id">{{"errors-not-found" | translate}}</p>
+      </div>
+    </div>
+    <div class="spacer big"></div>
+  </section>
+  <section id="contact">
+  <div class="section-wrapper">
+    <!-- <hr class="title-break"
+    -->
+    <div class="section-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-4 mg-sm footer-left text-center" data-effect="fadeIn">
+            <div class="logo-footer center-block">
+              <img [src]="socialMediaResponse?.nl_activated ? socialMediaResponse?.color_logo : './../../assets/images/kz-logo-2-color.svg'"/>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="spacer big"></div>
+            <h3>
+              <strong>
+                {{socialMediaResponse?.social_media_title}}
+              </strong>
+            </h3>
+            <div class="soc-btn" >
+              <span *ngFor="let smICon of socialMediaResponse?.sm_icons">
+              <a href={{smICon.url}} ><img src={{smICon?.image}} class="svg social-logo"></a>
+              </span>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>

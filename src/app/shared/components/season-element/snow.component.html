@@ -1,0 +1,60 @@
+<div class="vp-particle one snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="vp-particle two snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="vp-particle three snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="vp-particle four snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="vp-particle five snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="vp-particle six snow">
+    <img src={{seasonResponse?.season?.secondary_image}}>
+</div>
+<div class="var-prog-mobile-wrap">
+    <span class="vp-close">
+        <span class="glyphicon glyphicon-remove"></span>
+    </span>
+    <div class="vp-particle mobile one snow">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+    <div class="vp-particle mobile two snow">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+    <div class="vp-particle mobile three snow">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+    <div class="vp-particle mobile four snow">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+    <div class="var-prog-mobile v2">
+        <a data-toggle="modal" href="{{seasonResponse?.season?.url}}">
+            <div class="vp-caption mobile two">
+                <div style="width: 100%">
+                    <p class="one">{{seasonResponse?.season?.title}}</p>
+                    <div [innerHTML]="seasonResponse?.season?.body"></div>
+                </div>
+            </div>
+            <img src={{seasonResponse?.season?.primary_image}} class="main two">
+        </a>
+    </div>
+</div>
+<div class="var-prog v2">
+     <span class="vp-close two">
+        <span class="glyphicon glyphicon-remove"></span>
+    </span>
+    <a data-toggle="modal" href="{{seasonResponse?.season?.url}}">
+        <div class="vp-caption">
+            <div style="width: 100%;">
+                <p class="one">{{seasonResponse?.season?.title}}</p>
+                <div [innerHTML]="seasonResponse?.season?.body"></div>
+            </div>
+        </div>
+        <img src={{seasonResponse?.season?.primary_image}} class="main.two">
+    </a>
+</div>

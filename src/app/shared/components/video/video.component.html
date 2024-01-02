@@ -1,0 +1,37 @@
+<div class="home-wrapper" *ngIf="response?.header_section === 'video'">
+    <div class="content-home-wrapper text-center">
+      <div class="header-center">
+          <h1>{{response?.video_title}}<span style="font-size: 0.25em;font-weight: normal;" *ngIf="response?.show_registered_symbol == true"><sub>®</sub></span></h1>
+          <p>{{response?.video_copy_text}}</p>
+
+<!--           <div class="spacer small"></div>
+          <div class="down-arrow"><p><a class="sscroll slider-more" (click)="gotoRefernece('what')"><i class="fa fa-angle-down"></i></a></p></div> -->
+      </div>
+    </div>
+    <div class="fullfilter"></div>
+
+    <div class="home-video">
+      <video autoplay="" id="video_background" loop="" muted="" poster="{{response?.fallback_image}}" muted  onloadedmetadata="this.muted = true; this.play();">
+        <source src="{{response?.mp4_vid}}" type="video/mp4">
+        <source src="{{response?.ogg_vid}}" type="video/ogg">
+        <source src="{{response?.webm_vid}}" type="video/webm">
+      </video>
+    </div>
+    <div class="home-video-fallback" [ngStyle]="{'background-image': 'url(' + response?.fallback_image + ')' } "> </div>
+</div>
+
+<div class="simple-slider" style="display: block" *ngIf="response?.header_section === 'slider'">
+  <div class="owl-carousel" id="main-slider">
+    <ng-container *ngFor="let slider of  response?.slider; let indexOfelement=index;">
+      <div class="item" [attr.id]="'Slider-' + indexOfelement" [ngStyle]="{'background-image': 'url(' + slider?.image + ')'}">
+          <ng-container>{{MobileView(indexOfelement, slider?.range)}}</ng-container>
+          <div class="caption">
+            <h2 class="title">{{slider?.title}}</h2>
+            <p *ngIf="slider?.copy_text">{{slider?.copy_text}}</p>
+            <a href="{{slider?.button_url}}" class="btn btn-default btn-red" *ngIf="slider?.button_url">{{slider.button_title}} &nbsp;&nbsp;›</a>
+          </div>
+      </div>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="response?.slider?.length>0">{{SlideImages(response?.slider_interval)}}</ng-container>
+</div>

@@ -1,0 +1,28 @@
+<seo [(seoResponse)]="privacyResponse"></seo>
+
+<div class="home-wrapper privacy" id="whatIsKz">
+    <div class="content-home-wrapper text-center">
+
+    </div>
+    <div class="fullfilter"></div>
+    <div class="internal-head"></div>
+    <div class="black-filler" style="top:0; position:absolute;"></div>
+
+</div>
+<div class="section-outter">
+  	<section id="what">
+      	<div class="arc-divider"></div>
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div class="container">
+                  <div class="section-title">
+                    <h2 class="section-title">{{privacyResponse?.privacy?.title}}</h2>
+                  </div>
+                	<div class="single-column">
+                  	<p [innerHTML]="privacyResponse?.privacy?.body"></p>
+                 	</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

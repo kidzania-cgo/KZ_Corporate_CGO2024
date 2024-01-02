@@ -1,0 +1,23 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-adj around-world" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h1 class="modal-title" id="myModalLabel">{{"find-kidzania" | translate}}</h1>
+                  </div>
+
+                  <div class="modal-body kznationmap">
+                    <ng-container *ngFor="let region of mapResponse?.regions">
+                       <div [innerHTML]="setRegionDescription(region?.location_description)"  *ngIf="region?.location_description" >
+                       </div>
+                    </ng-container>
+
+
+                    <div class="legend">
+                      <img src='../../../../assets/images/red-marker.png' > {{"open" | translate}}<br>
+                      <img src='../../../../assets/images/yellow-marker.png'> {{"coming_soon" | translate}}
+                    </div>
+                  </div>
+              </div>
+        </div>
+</div>

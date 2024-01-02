@@ -1,0 +1,29 @@
+<seo [(seoResponse)]="bkidzanianResponse"></seo>
+<image-slider [(headerResponse)]="bkidzanianResponse"></image-slider>
+
+<!-- BEGIN CONTENT SECTION -->
+
+<div class="section-outter">
+
+
+    <!-- BEGIN WHAT IS KIDZANIA  -->
+
+    <section id="what">
+
+        <div class="arc-divider"></div>
+
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div class="container">
+                    <p class="catch" [innerHTML]="bkidzanianResponse?.introduction"></p>
+                    <div class="single-column" *ngFor="let section of bkidzanianResponse?.sections">
+                        <div class="section-title" *ngIf="section.title != ''">
+                          <h2 class="title"><img *ngIf="section.icon" src={{section?.icon}} class="img-icon">{{section.title}}</h2>
+                        </div>
+                        <p [innerHTML]="section?.description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

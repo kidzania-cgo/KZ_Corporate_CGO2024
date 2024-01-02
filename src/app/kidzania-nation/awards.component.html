@@ -1,0 +1,32 @@
+<seo [(seoResponse)]="awardsResponse"></seo>
+
+<image-slider [(headerResponse)]="awardsResponse"></image-slider>
+<div class="section-outter">
+    <section id="what">
+        <div class="arc-divider"></div>
+        <div class="section-wrapper">
+          <div class="spacer small"></div>
+          <div class="section-inner">
+            <div class="container">
+              <div class="container">
+                <p class="catch" [innerHTML]="awardsResponse?.introduction"></p>
+                <div class="single-column">
+                  <ng-container *ngFor="let award of awardsResponse?.awards">
+                    <h3><b><img *ngIf="award?.icon" src={{award?.icon}} class="img-icon">{{award?.title}}</b></h3>
+                    <ul class="media-links">
+                      <li class="clearfix" *ngFor="let item of award?.list">
+                        <div class="media-logos awards">
+                            <img src={{item?.icon}}>
+                        </div>
+                        <div class="press-title" [innerHTML]="item.description"></div>
+                      </li>
+                    </ul>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </section>
+</div>

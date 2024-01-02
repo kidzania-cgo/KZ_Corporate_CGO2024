@@ -1,0 +1,53 @@
+.vita-info.active, .bache-info.active, .chika-info.active, .beebop-info.active  {
+   display: block;
+}
+
+.ztory-content.spirit.active {
+    display: block;
+}
+
+/*  404 & 500 */
+.home-wrapper.error {
+    background: #bd234d;
+    height: 20%;
+    min-height: 200px;
+}
+.e404-content h1.title, .e500-content h1.title {
+    text-align: center;
+    font-size: 58px;
+    margin-bottom: 30px;
+}
+.e404-content .subtitle, .e500-content .subtitle {
+    font-size: 28px;
+}
+.img-500 {
+    max-width: 250px;
+    max-height:260px;
+}
+.error-id {
+    font-size: 12px;
+}
+@media (max-width: 992px){
+    .e404-content h1.title, .e500-content h1.title{
+        font-size: 36px;
+        line-height: 1;
+    }
+    .e404-content .subtitle, .e500-content .subtitle {
+        font-size: 22px;
+    }
+    .img-500 {
+        float: none !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 768px){
+    .home-wrapper.error {
+        min-height:115px;
+    }
+}
+@media (max-width: 480px){
+    .home-wrapper.error {
+        min-height:100px;
+    }
+}

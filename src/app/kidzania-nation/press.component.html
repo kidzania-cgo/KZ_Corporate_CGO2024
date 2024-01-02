@@ -1,0 +1,49 @@
+<seo [(seoResponse)]="pressResponse"></seo>
+
+<image-slider [(headerResponse)]="pressResponse"></image-slider>
+<div class="section-outter">
+    <section id="what">
+        <div class="arc-divider"></div>
+        <div class="section-wrapper">
+            <div class="section-inner">
+                <div class="container">
+                    <p class="catch" [innerHTML]="pressResponse?.introduction"></p>
+                    <div class="spacer small"></div>
+                    <div class="single-column" *ngFor="let section of  pressResponse?.sections; let i=index">
+                       <span *ngIf="i+1 <=pressResponse?.press_position || (null == pressResponse?.press_position && i <= 0)">
+                          <div class="section-title">
+                                <h2 class="title"><img *ngIf="section?.icon" src={{section?.icon}} class="img-icon">{{section.title}}</h2>
+                            </div>
+                          <p [innerHTML]="section?.description"></p>
+                          <a *ngIf="section?.button_url" href={{section?.button_url}} class="btn btn-default  " data-effect="fadeInLeft" target="_blank">{{section?.button_title}}&nbsp;&rsaquo;</a>
+                       </span>
+                    </div>
+                    <div class="single-column">
+                      <ng-container *ngFor="let press of pressResponse?.presses">
+                         <h3><b><img *ngIf="press?.icon" src={{press?.icon}} class="img-icon">{{press?.title}}</b></h3>
+                         <ul class="media-links">
+                            <li class="clearfix" *ngFor="let item of press?.list">
+                                <a href={{item?.link}} target="_blank">
+                                <div class="media-logos">
+                                    <img src={{item?.icon}}>
+                                </div>
+                                <div class="press-title" [innerHtml]="item?.description"></div>
+                                </a>
+                            </li>
+                         </ul>
+                      </ng-container>
+                    </div>
+                </div>
+                <div class="single-column" *ngFor="let section of  pressResponse?.sections; let i=index">
+                       <span *ngIf="i+1 > pressResponse?.press_position || (null == pressResponse?.press_position && i > 0)">
+                          <div class="section-title">
+                                <h2 class="title"><img *ngIf="section?.icon" src={{section?.icon}} class="img-icon">{{section.title}}</h2>
+                            </div>
+                          <p [innerHTML]="section?.description"></p>
+                          <a *ngIf="section?.button_url" href={{section?.button_url}} class="btn btn-default  " data-effect="fadeInLeft" target="_blank">{{section?.button_title}}&nbsp;&rsaquo;</a>
+                       </span>
+                    </div>
+            </div>
+        </div>
+    </section>
+</div>

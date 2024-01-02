@@ -1,0 +1,13 @@
+<div class="internal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header-topbar" id="economy-top">
+            <button type="button" class="close video" data-dismiss="modal" aria-label="Close" (click)='stopVideo()'><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="embed-responsive embed-responsive-16by9" id="videoContainer" >
+        <iframe id="videoContainerIframe" [src]='' allowfullscreen class="embed-responsive-item" *ngIf="videoResponse?.whats_kidzania?.video_url"></iframe>
+        </div>
+
+    </div>
+  </div>
+</div>

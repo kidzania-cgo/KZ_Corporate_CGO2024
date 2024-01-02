@@ -1,0 +1,43 @@
+<seo [(seoResponse)]="companyInfoResponse"></seo>
+
+<image-slider [(headerResponse)]="companyInfoResponse"></image-slider>
+<div class="section-outter">
+  	<section id="what">
+      	<div class="arc-divider"></div>
+      	<div class="section-wrapper">
+      		<p class="catch" [innerHTML]="companyInfoResponse?.introduction"></p>
+      		<div class="spacer small"></div>
+      		<div class="section-inner">
+      			<div class=" section-wrapper section-inner">
+      			   <div class="container">
+      			   		<div class="row">
+      			   			<span  *ngFor="let section of companyInfoResponse?.sections; let interval=index">
+      			   				<div class="row">
+		                            <div *ngIf="interval%2 == 0" class="col-sm-6 mg-sm grid-module" data-effect="slideInLeft">
+
+		                                <div>
+		                                    <img src={{section?.icon}}>
+		                                    <h3>{{section?.title}}</h3>
+		                                </div>
+	                                    <p [innerHTML]="section?.description"></p>
+	                                    <div class="spacer small"></div>
+	                                    <a *ngIf="section?.button_url" href={{section.button_url}} class="btn btn-default " data-effect="fadeInLeft">{{section.button_title}}&nbsp;›</a>
+		                            </div>
+		                            <div *ngIf="interval%2 == 0 && companyInfoResponse?.sections[interval+1]" class="col-sm-6 mg-sm  delay one grid-module" data-effect="fadeInRight">
+		                                <div>
+		                                    <img src={{companyInfoResponse?.sections[interval+1]?.icon}}>
+		                                    <h3>{{companyInfoResponse?.sections[interval+1]?.title}}</h3>
+		                                </div>
+	                                    <p [innerHTML]="companyInfoResponse?.sections[interval+1]?.description"></p>
+	                                    <div class="spacer small"></div>
+	                                    <a *ngIf="companyInfoResponse?.sections[interval+1]?.button_url" href={{companyInfoResponse?.sections[interval+1]?.button_url}} class="btn btn-default " data-effect="fadeInLeft">{{companyInfoResponse?.sections[interval+1]?.button_title}}&nbsp;›</a>
+		                            </div>
+		                        </div>
+                        	</span>
+      			   		</div>
+      			   </div>
+      			</div>
+      		</div>
+      	</div>
+    </section>
+</div>

@@ -1,0 +1,76 @@
+<!-- Particles -->
+<div class="particle-bat one-x">
+    <div class="particle-bat one-y">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+</div>
+<div class="particle-bat two-x">
+    <div class="particle-bat two-y">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+</div>
+<div class="particle-bat three-x">
+    <div class="particle-bat three-y">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+</div>
+<div class="particle-bat four-x">
+    <div class="particle-bat four-y">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+</div>
+<div class="particle-bat five-x">
+    <div class="particle-bat five-y">
+        <img src={{seasonResponse?.season?.secondary_image}}>
+    </div>
+</div>
+
+
+<!-- Mobile -->
+<div class="var-prog-mobile-wrap" style="bottom: -200px;">
+    <span class="vp-close">
+        <span class="glyphicon glyphicon-remove"></span>
+    </span>
+    
+
+    <div class="var-prog-mobile v2 spooky">
+
+        <div class="particle-bat two-x-mobile">
+            <div class="particle-bat two-y-mobile">
+                <img src={{seasonResponse?.season?.secondary_image}}>
+            </div>
+        </div>
+        <div class="particle-bat three-x-mobile">
+            <div class="particle-bat three-y-mobile">
+                <img src={{seasonResponse?.season?.secondary_image}}>
+            </div>
+        </div>
+        <a data-toggle="modal" href={{seasonResponse?.season?.url}}>
+            <div class="vp-caption mobile two">
+                <div style="width: 100%">
+                    <p class="one">{{seasonResponse?.season?.title}}</p>
+                    <div [innerHTML]="seasonResponse?.season?.body"></div>
+                </div>
+
+            </div>
+            <img src={{seasonResponse?.season?.primary_image}} class="main two">
+        </a>
+    </div>
+
+</div>
+
+<div class="var-prog v2 spooky">
+    <span class="vp-close two">
+        <span class="glyphicon glyphicon-remove"></span>
+    </span>                        
+    <a data-toggle="modal" href={{seasonResponse?.season?.url}}>
+        <div class="vp-caption">
+            <div style="width: 100%">
+                <p class="one">{{seasonResponse?.season?.title}}</p>
+                <div [innerHTML]="seasonResponse?.season?.body"></div>
+            </div>
+
+        </div>
+        <img src={{seasonResponse?.season?.primary_image}} class="main.two">
+    </a>
+</div>
