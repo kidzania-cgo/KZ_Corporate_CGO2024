@@ -1,9 +1,9 @@
 # config valid only for current version of Capistrano
 #lock "3.8.2"
-set :stages, ["production"]
+set :stages, ["production", "staging"]
 
 set :application, "kidzania_corporate"
-set :repo_url, 'git@github.com:kidzania-cgo/corporate.git'
+set :repo_url, 'git@github.com:kidzania-cgo/KZ_Corporate_CGO2024.git'
 
 set :branch, fetch(:branch, 'release')
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
