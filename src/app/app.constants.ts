@@ -9,7 +9,7 @@ export class Configuration {
 
     public apiLang: string = this.getApiLang();
     public currLang: string = this.getCurrLang();
-    public Server: string = "https://kidzania.com/";
+    public Server: string = "http://kzdelta.com/";
     // public Server: string = "http://london.kidzania.com:3000/"
     public Langfonts: object = {ar:'https://fonts.googleapis.com/css?family=Cairo:400,600,700,900&subset=arabic', 
                                 th:'https://fonts.googleapis.com/css?family=Kanit:400,700,900&subset=thai', 
