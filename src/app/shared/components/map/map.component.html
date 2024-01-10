@@ -7,8 +7,8 @@
                   </div>
 
                   <div class="modal-body kznationmap">
-                    <ng-container *ngFor="let region of mapResponse?.regions">
-                       <div [innerHTML]="setRegionDescription(region?.location_description)"  *ngIf="region?.location_description" >
+                    <ng-container *ngFor="let region of sanitizedRegions">
+                       <div [innerHTML]="region.location_description"  *ngIf="region.location_description" >
                        </div>
                     </ng-container>
 
